@@ -179,94 +179,6 @@ function queryJesAndCo(id, asn) {
 }
 
 
-// function queryJesAndCoSPARQL(id, asn) {
-//     // var resource = "http://asn.jesandco.org/resources/S1017AA1";
-//     // resource = "http://purl.org/ASN/resources/S101D0D7";
-//     var baseUrl = 'http://asn.jesandco.org:8890/sparql';
-
-//     aurl = asn.replace("//purl.org/ASN", "//asn.jesandco.org")
-//     console.log(aurl);
-//     var query='select * where {<'+aurl+'> ?predicate ?object}';
-
-//     //var query='select * where {?asnURI ?property ?value; asn:identifier <'+resource+'>}'
-//     var data = {
-//         'default-graph-uri':"",
-//         'query': query,
-//         'debug': 'on',
-//         'timeout': "",
-//         'format': 'json',
-//         'save': 'display',
-//         'fname': ""
-//     };
-
-//     var callback = function(response, status, jqXHR) {
-//         var info = {
-//             "identifier": asn,
-//             "educationLevel": [],
-//             "description":[],
-//             "subject": []
-//             "statementNotation":[]
-//         }
-//         try {
-//             var bindings = response.results.bindings
-//             for(var i=0; i < bindings.length; i++) {
-//                 switch(bindings[i].predicate.value) {
-//                     case "http://purl.org/dc/terms/subject":
-//                         info.subject.push(bindings[i].object.value);
-//                         break;
-//                     case "http://purl.org/dc/terms/educationLevel":
-//                         info.educationLevel.push(bindings[i].object.value);
-//                         break;
-//                     case "http://purl.org/dc/terms/description":
-//                         info.description.push(bindings[i].object.value);
-//                         break;
-//                     case "http://purl.org/ASN/schema/core/statementNotation":
-//                         info.statementNotation.push(bindings[i].object.value);
-//                     default:
-//                         break;
-//                 }
-//             }
-
-//             function strip(url) {
-//                 return url.replace(/^.*\//, '');
-//             }
-
-//             info.subject = info.subject.map(strip).join(", ");
-//             info.educationLevel = info.educationLevel.map(strip).join(", ");
-
-//         } catch( Error) {
-//             console.log(Error);
-//         }
-
-//         var template = 
-//             '<div style="font-size:10px;"><p>' +
-//             '{{#description}}'+
-//                 '{{#identifier}}<a href="{{identifier}}" target="_blank">{{/identifier}}'+
-//                     '{{.}}'+
-//                 '{{#identifier}}</a>{{/identifier}}<br/>'+
-//             '{{/description}}' +
-//             '{{#educationLevel}}<em>Education Level:</em> {{educationLevel}}<br/>{{/educationLevel}}' +
-//             '{{#subject}}<em>Subject:</em> {{subject}}<br/>{{/subject}}' +
-//             '</p><div>';
-
-//         var html = Mustache.to_html(template, info);
-//         $("div#learnreg-"+id+" div.data").append(html);
-//         console.log("data for: "+id+" "+JSON.stringify(response));
-//     }
-
-//     var params = {
-//         "url": baseUrl,
-//         "dataType": "jsonp",
-//         "data": data,
-//         "success": callback,
-//         "cache": false,
-//         "jsonp": "callback"
-//     };
-
-//     chrome_ajax(params);
-// }
-
-
 function doAlignment(resource) {
     var ajaxUrl = couchdb+'/resource_data/_design/standards-alignment/_view/by-resource-locator?callback=?'
     var data = {
@@ -340,33 +252,9 @@ function parseLinks() {
 }
 
 
-// function attachInstantSearchListener(eid) {
-
-//     var callback = function() {
-//         console.log("search input keypress.");
-//         var new_eid = $("ol#rso").attr("eid");
-//         if (new_eid != eid) {
-//             console.log("search results changed!!!");
-//             eid = new_eid;
-//             parseLinks();
-//         }
-//     }
-
-//     try {
-//         $("input#lst-ib.gsfi").unbind("keypress", callback);
-//     } catch (Error) {
-//         console.log(Error)
-//     }
-
-//     $("input#lst-ib.gsfi").bind("keypress", callback);
-// }
-
 var eid = null;
 
 jQuery(function(){
-    // attachInstantSearchListener(eid);
-    // setTimeout('attachInstantSearchListener(eid);', 1000);
-
     $("body").live("keydown", function(event) {
         // Bind to both command (for Mac) and control (for Win/Linux)
         var modifier = event.ctrlKey || event.metaKey;
