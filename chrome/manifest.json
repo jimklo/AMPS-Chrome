@@ -1,0 +1,17 @@
+{
+  "name": "Resource Standards Alignment",
+  "version": "1.0",
+  "description": "Extension to overlay standards alignment information within search results",
+  "background_page": "background.html",
+  "permissions": [
+    "http://setda.arkitec.com/*",
+    "http://asn.jesandco.org/*"
+  ],
+  "content_scripts": [
+  	{
+  		"matches": ["*://www.google.com/*", "*://google.com/*"],
+  		"js": ["script/jquery-1.6.4.js", "script/mustache.js", "script/crypto-sha1.js",  "goog-content-script.js", "script/lawnchair-0.6.1.js", "script/lawnchair-adapter-indexed-db-0.6.1.js"],
+      "css": ["style/chrome.css"]
+  	}
+  ]
+}

@@ -1,0 +1,64 @@
+<script src="./script/jquery-1.6.4.js"></script>
+<script src="./script/mustache.js"></script>
+<script>
+function doMustache(id, data, callback) {
+
+	var template = $('#'+id).html()
+	var html = Mustache.to_html(template, data);
+    callback(html);
+}
+
+function onRequest(request, sender, callback) {
+	console.log("received event")
+  	if (request.action == 'getJSON') {
+  		// console.log("getJSON: "+request.url+" "+request.data.startkey);
+  		$.getJSON(request.url, request.data, callback);
+  	} else if (request.action == 'ajax') {
+  		// console.log("ajax: "+JSON.stringify(request.data));
+  		request.data.success = callback;
+  		$.ajax(request.data);
+  	} else if (request.action == 'mustache') {
+  		// console.log("mustache");
+  		doMustache(request.id, request.data, callback);
+  	}
+}
+
+chrome.extension.onRequest.addListener(onRequest);
+</script>
+
+
+<script type="text/x-mustache" id="block">
+<div id="learnreg-{{{id}}}" class="learning-registry">
+	<img src="{{stdImg}}" style="float: left;"><em>Standards Alignment Information by the Learning Registry</em>
+	<div class="data"></div>
+<div>
+</script>
+
+<script  type="text/x-mustache" id="std">
+<div class="std">
+{{#statementNotation}}
+{{#category}}
+	<div class="cat">{{category}}: {{statementNotation}}</div>
+{{/category}}
+{{^category}}
+	<div class="sn"><em>Statement Notation:</em> {{statementNotation}}</div>
+{{/category}}
+{{#standard}}
+	<div class="asn">
+		{{#identifier}}<a href="{{identifier}}" target="_blank">{{{standard}}}</a>{{/identifier}}
+		{{^identifier}}{{{standard}}}{{/identifier}}
+	</div>
+{{/standard}}
+{{#educationLevel}}
+	<div class="edlvl">
+		<em>Education Level:</em> {{educationLevel}}
+	</div>
+{{/educationLevel}}
+{{#subject}}
+	<div class="subj">
+		<em>Subject:</em> {{subject}}
+	</div>
+{{/subject}}
+{{/statementNotation}}
+<div>
+</script>

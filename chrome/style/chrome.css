@@ -1,0 +1,26 @@
+
+div.learning-registry {
+	background-color: #FFFF99;
+	white-space: normal;
+}
+
+div.learning-registry .data {
+	margin-left:64px;
+}
+
+div.learning-registry .std {
+	font-size: 10px;
+	padding: 5px 2px;
+}
+
+div.learning-registry .cat, 
+div.learning-registry .sn,
+div.learning-registry .asn,
+div.learning-registry .edlvl,
+div.learning-registry .subj {
+	display: block;
+}
+
+div.learning-registry .cat {
+	font-weight: bold;
+}
