@@ -12,6 +12,32 @@ var chrome_mustache = function(id, data, callback) {
   chrome.extension.sendRequest({"action":"mustache", "id": id, "data":data}, callback);
 }
 
+
+chrome.extension.onRequest.addListener(function (request, sender, callback) {
+    console.log("received event")
+
+    if (request.action == 'toggle') {
+        // console.log("getJSON: "+request.url+" "+request.data.startkey);
+        if (request.show) {
+             $(request.selector).removeClass("hidden");
+        } else {
+            $(request.selector).addClass("hidden");
+        }
+
+        Lawnchair(function(){
+            this.save({"key":"opt_"+request.selector, "value":request.show})
+        });
+    } else if (request.action == 'get_toggle') {
+        var mycb = callback;
+        var lc = Lawnchair(function(){});
+        lc.get("opt_"+request.selector, function(obj) {
+                mycb({"checked":obj.value});
+            });
+    }
+});
+
+
+
 var imgBulb = chrome.extension.getURL("images/dialog-information-2.png");
 var imgEdu = chrome.extension.getURL("images/applications-education.png");
 var couchdb = "http://demolearningregistry.sri.com";
@@ -54,7 +80,13 @@ function queryJesAndCo(id, asn) {
                 chrome_mustache("std", keyExists.value, function(html) {
                     if (html && html != "") {
                         $("div#learnreg-"+id+" div.data").append(html);
-
+                        lc.get("opt_.learning-registry.standards", function(obj){
+                            if (obj.value) {
+                                $("div#learnreg-"+id+".hidden").removeClass("hidden");
+                            } else {
+                                $("div#learnreg-"+id).addClass("hidden");
+                            }
+                        });
                         // console.log("cached data for: "+id+" "+html);
                     }
                 });
@@ -209,27 +241,62 @@ function doAlignment(resource) {
 function doActivity(resource) {
     var ajaxUrl = couchdb+'/resource_data/_design/paradata-activity/_view/by-resource-id?callback=?'
     var data = {
-        'startkey':JSON.stringify([resource,null]),
-        'endkey':JSON.stringify([resource,{}]),
+        'startkey':JSON.stringify([resource,,null,null]),
+        'endkey':JSON.stringify([resource,{},{}]),
         'reduce':true,
-        'group_level':2
+        'group_level':3
     }
 
     chrome_getJSON(ajaxUrl, data, function(response) { 
         // console.log("processing results for: "+resource);
-        var stmtMap = {};
+        var activities = {};
+        var hasActivities = 0;
         for (var i=0; i<response.rows.length; i++) {
-            var activity = response.rows[i].key[1];
-            if (!stmtMap[activity]) {
-                stmtMap[key] = 0;
+            var verb = response.rows[i].key[1];
+            if (!activities[verb]) {
+                activities[verb] = [];
+                hasActivities += 1;
             }
+            activities[verb].push(response.rows[i].key[2]);
         }
 
-        if (urls.length > 0) {
-            idResults({ "resource": resource, "stds": urls })
+        if (hasActivities > 0) {
+            injectActivity({ "resource": resource, "activity": activities })
         }
     });
 }
+
+
+function injectActivity(data) {
+    try {
+        var id = Crypto.SHA1(data.resource, {asString:false});
+        var div_id = "#learnreg-social-"+id;
+        if (!($(div_id) && $(div_id).length > 0)) 
+        {
+            var activity = [];
+            for (var verb in data.activity) {
+                activity.push({ "verb": verb, "activities": data.activity[verb]});
+            }
+            
+            chrome_mustache("block-social", {"id":id, "stdImg":imgBulb, "activity":activity}, function(html){
+                $(links[data.resource]).closest("div.vsc").append(html);
+
+                var lc = Lawnchair(function(){});
+                lc.get("opt_.learning-registry.activity", function(obj){
+                    if (obj.value) {
+                        $("div#learnreg-social-"+id+".hidden").removeClass("hidden");
+                    } else {
+                        $("div#learnreg-social-"+id).addClass("hidden");
+                    }
+                });
+            });
+        }
+    } catch (Error) {
+        console.log("injectActivity: "+Error);
+    }
+}
+
+
 
 var links = {};
 function parseLinks() {
@@ -241,6 +308,7 @@ function parseLinks() {
         var urls = [];
         $("#ires li.g a.l").each(function() {
             doAlignment(this.href);
+            doActivity(this.href);
             urls.push(this.href);
             links[this.href]=this;
         });

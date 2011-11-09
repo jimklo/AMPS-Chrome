@@ -1,50 +1,93 @@
-<style>
-body {
-  min-width:357px;
-  overflow-x:hidden;
-}
+<html>
+  <head>
+  <script>
+  /*
+   Copyright 2011 SRI International
 
-img {
-  margin:5px;
-  border:2px solid black;
-  vertical-align:middle;
-  width:75px;
-  height:75px;
-}
-</style>
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
 
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+  */
+  </script>
+    <link rel="stylesheet" type="text/css" href="style/chrome.css">
+    <script src="script/jquery-1.6.4.js"></script>
+<script src="script/lawnchair-0.6.1.js"></script>
+<script src="script/lawnchair-adapter-indexed-db-0.6.1.js"></script>
 <script>
-var req = new XMLHttpRequest();
-req.open(
-    "GET",
-    "http://api.flickr.com/services/rest/?" +
-        "method=flickr.photos.search&" +
-        "api_key=90485e931f687a9b9c2a66bf58a3861a&" +
-        "text=hello%20world&" +
-        "safe_search=1&" +  // 1 is "safe"
-        "content_type=1&" +  // 1 is "photos only"
-        "sort=relevance&" +  // another good one is "interestingness-desc"
-        "per_page=20",
-    true);
-req.onload = showPhotos;
-req.send(null);
-
-function showPhotos() {
-  var photos = req.responseXML.getElementsByTagName("photo");
-
-  for (var i = 0, photo; photo = photos[i]; i++) {
-    var img = document.createElement("image");
-    img.src = constructImageURL(photo);
-    document.body.appendChild(img);
+  var chrome_toggle = function(selector, checked, callback) {
+    chrome.tabs.getSelected(null, function(tab) {
+      chrome.tabs.sendRequest(tab.id, {"action":"toggle", "selector": selector, "show":checked}, callback);
+    });
   }
-}
 
-// See: http://www.flickr.com/services/api/misc.urls.html
-function constructImageURL(photo) {
-  return "http://farm" + photo.getAttribute("farm") +
-      ".static.flickr.com/" + photo.getAttribute("server") +
-      "/" + photo.getAttribute("id") +
-      "_" + photo.getAttribute("secret") +
-      "_s.jpg";
-}
+  var chrome_get_toggle = function(selector, id, callback) {
+    
+    chrome.tabs.getSelected(null, function(tab) {
+      chrome.tabs.sendRequest(tab.id, {"action":"get_toggle", "selector": selector}, 
+        function(response){
+          console.log("checked:"+response.checked);
+          if (response.checked) {
+            $(id).attr("checked", true);
+          } else {
+            $(id).attr("checked", false);
+          }
+          callback();
+        });
+    });
+
+
+  }
+
+
+  jQuery(function(){
+
+    chrome_get_toggle(".learning-registry.standards", "#standards_check", function(){
+      $("#standards_check").bind("click", function() {
+        console.log($(this).attr("checked"));
+        chrome_toggle(".learning-registry.standards", $(this).is(":checked"), function(obj){
+          console.log("saved");
+          console.log(obj);
+        });
+      });
+    });
+
+    chrome_get_toggle(".learning-registry.activity", "#activity_check", function(){
+      $("#activity_check").bind("click", function() {
+        chrome_toggle(".learning-registry.activity", $(this).is(":checked"), function(obj) {
+          console.log("saved");
+          console.log(obj);
+        });
+      });
+
+    });
+
+
+  });
 </script>
+
+  </head>
+  <body>
+    <div class="popup">
+      <div>
+        <input type="checkbox" id="standards_check">
+        <img src="images/applications-education.png"> 
+        Show Standards Alignment 
+      </div>
+      <div>
+        <input type="checkbox" id="activity_check">
+        <img src="images/dialog-information-2.png"> Show Activity Data 
+      </div>
+
+    </div>
+  </body>
+</html>
+
+

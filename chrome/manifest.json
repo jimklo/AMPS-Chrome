@@ -1,17 +1,29 @@
 {
-  "name": "Resource Standards Alignment",
+  "name": "Learning Registry Resource Activity & Alignment Prototype",
   "version": "1.0",
-  "description": "Extension to overlay standards alignment information within search results",
+  "description": "Extension injects activity data and standards alignment information within search results for learning resources identified in within the Learning Registry. Copyright 2011 SRI International",
   "background_page": "background.html",
   "permissions": [
-    "http://setda.arkitec.com/*",
+    "tabs",
+    "http://demolearningregistry.sri.com/*",
     "http://asn.jesandco.org/*"
   ],
+  "browser_action": {
+    "default_icon": "images/lr-19.png",
+    "default_title": "Show learning resources activity & alignment",
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
   	{
   		"matches": ["*://www.google.com/*", "*://google.com/*"],
   		"js": ["script/jquery-1.6.4.js", "script/mustache.js", "script/crypto-sha1.js",  "goog-content-script.js", "script/lawnchair-0.6.1.js", "script/lawnchair-adapter-indexed-db-0.6.1.js"],
       "css": ["style/chrome.css"]
   	}
-  ]
+  ],
+  "icons": {
+    "128": "images/lr-128.png",
+    "16": "images/lr-16.png",
+    "48": "images/lr-48.png"
+  },
+  "homepage_url": "http://www.learningregistry.org"
 }

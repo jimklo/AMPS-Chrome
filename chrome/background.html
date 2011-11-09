@@ -1,9 +1,50 @@
 <script src="./script/jquery-1.6.4.js"></script>
 <script src="./script/mustache.js"></script>
 <script>
-function doMustache(id, data, callback) {
 
+var mt_cap = function() {
+	return function(text, render) {
+		var r = render(text);
+		return r.charAt(0).toUpperCase() + r.slice(1);
+	}
+}
+
+var mt_capitalED = function() {
+  return function(text, render) {
+  	var r = render(text);
+  	if (r.match(/e$/)) {
+  		r += "d";
+  	} else {
+  		r += "ed";
+  	}
+
+  	return r.charAt(0).toUpperCase() + r.slice(1);
+  }
+}
+
+var mt_linkify = function() {
+	return function(text, render) {
+		var r = render(text);
+		var l = r.replace(/(https?:\/\/[^ ]+)/gi, '<a href="$1" target="_blank">$1</a>');
+		return l;
+	}
+}
+
+function doMustache(id, data, callback) {
 	var template = $('#'+id).html()
+
+	if (!data.capitaled) {
+		data.capitaled = mt_capitalED;
+	}
+
+	if (!data.cap) {
+		data.cap = mt_cap;
+	}
+
+	if (!data.linkify) {
+		data.linkify = mt_linkify;
+	}
+
 	var html = Mustache.to_html(template, data);
     callback(html);
 }
@@ -28,9 +69,24 @@ chrome.extension.onRequest.addListener(onRequest);
 
 
 <script type="text/x-mustache" id="block">
-<div id="learnreg-{{{id}}}" class="learning-registry">
-	<img src="{{stdImg}}" style="float: left;"><em>Standards Alignment Information by the Learning Registry</em>
-	<div class="data"></div>
+<div id="learnreg-{{{id}}}" class="learning-registry standards hidden">
+	<img src="{{stdImg}}">
+	<div class="data"><em>Standards Alignment Information by the Learning Registry</em></div>
+<div>
+</script>
+
+<script type="text/x-mustache" id="block-social">
+<div id="learnreg-social-{{{id}}}" class="learning-registry activity hidden">
+	<img src="{{stdImg}}">
+	<div class="data">
+	<em>Activity Data by the Learning Registry</em>
+	{{#activity}}
+	<div class="social">
+		<em>{{#capitaled}}{{verb}}{{/capitaled}}</em>
+		{{#activities}}<div class="activity">{{#cap}}{{#linkify}}{{.}}{{/linkify}}{{/cap}}</div>{{/activities}}
+	</div>
+	{{/activity}}
+	</div>
 <div>
 </script>
 

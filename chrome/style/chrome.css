@@ -1,16 +1,23 @@
 
+div.hidden {
+	display: none;
+}
+div.learning-registry img {
+	width: 48px;
+}
 div.learning-registry {
 	background-color: #FFFF99;
 	white-space: normal;
+	padding: 5px 0px;
 }
 
 div.learning-registry .data {
-	margin-left:64px;
+	margin-left:50px;
 }
 
-div.learning-registry .std {
-	font-size: 10px;
+div.learning-registry .std, div.learning-registry .social {
 	padding: 5px 2px;
+	font-size: 10px;
 }
 
 div.learning-registry .cat, 
@@ -18,9 +25,27 @@ div.learning-registry .sn,
 div.learning-registry .asn,
 div.learning-registry .edlvl,
 div.learning-registry .subj {
-	display: block;
+
 }
 
 div.learning-registry .cat {
 	font-weight: bold;
+}
+
+div.learning-registry img {
+	float: left;
+} 
+
+
+.popup {
+  	min-width:357px;
+  	overflow-x:hidden;
+  	font-family: arial, sans-serif;
+}
+
+.popup img {
+  margin:5px;
+  border:0px;
+  vertical-align:middle;
+  width:24px;
 }
