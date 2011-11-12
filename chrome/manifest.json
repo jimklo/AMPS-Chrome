@@ -1,7 +1,7 @@
 {
-  "name": "Learning Registry Resource Activity & Alignment Prototype",
+  "name": "AMPlified Search for Google™ by Learning Registry",
   "version": "1.0",
-  "description": "Extension injects activity data and standards alignment information within search results for learning resources identified in within the Learning Registry. Copyright 2011 SRI International",
+  "description": "Amplifies Google™ search by identifying learning resources by adding available standards alignment data and usage information found in Learning Registry. Copyright 2011 SRI International",
   "background_page": "background.html",
   "permissions": [
     "tabs",
@@ -9,7 +9,7 @@
     "http://asn.jesandco.org/*"
   ],
   "browser_action": {
-    "default_icon": "images/lr-19.png",
+    "default_icon": "images/amps-19.png",
     "default_title": "Show learning resources activity & alignment",
     "default_popup": "popup.html"
   },
@@ -21,9 +21,9 @@
   	}
   ],
   "icons": {
-    "128": "images/lr-128.png",
-    "16": "images/lr-16.png",
-    "48": "images/lr-48.png"
+    "128": "images/amps-128.png",
+    "16": "images/amps-16.png",
+    "48": "images/amps-48.png"
   },
   "homepage_url": "http://www.learningregistry.org"
 }
