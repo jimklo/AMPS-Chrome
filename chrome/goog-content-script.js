@@ -46,7 +46,11 @@ chrome.extension.onRequest.addListener(function (request, sender, callback) {
         var mycb = callback;
         var lc = Lawnchair(function(){});
         lc.get("opt_"+request.selector, function(obj) {
-                mycb({"checked":obj.value});
+                if (obj) {
+                    mycb({"checked":obj.value});
+                } else {
+                    mycb({"checked":false})
+                }
             });
     }
 });
@@ -96,7 +100,7 @@ function queryJesAndCo(id, asn) {
                     if (html && html != "") {
                         $("div#learnreg-"+id+" div.data").append(html);
                         lc.get("opt_.learning-registry.standards", function(obj){
-                            if (obj.value) {
+                            if (obj && obj.value) {
                                 $("div#learnreg-"+id+".hidden").removeClass("hidden");
                             } else {
                                 $("div#learnreg-"+id).addClass("hidden");
@@ -298,7 +302,7 @@ function injectActivity(data) {
 
                 var lc = Lawnchair(function(){});
                 lc.get("opt_.learning-registry.activity", function(obj){
-                    if (obj.value) {
+                    if (obj && obj.value) {
                         $("div#learnreg-social-"+id+".hidden").removeClass("hidden");
                     } else {
                         $("div#learnreg-social-"+id).addClass("hidden");
