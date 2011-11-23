@@ -28,6 +28,12 @@
     });
   }
 
+  var chrome_plugin_active = function(callback) {
+    chrome.tabs.getSelected(null, function(tab) {
+      chrome.tabs.sendRequest(tab.id, {"action":"plugin_active" }, callback);
+    });
+  }
+
   var chrome_get_toggle = function(selector, id, callback) {
     
     chrome.tabs.getSelected(null, function(tab) {
@@ -69,6 +75,11 @@
 
     });
 
+    chrome_plugin_active(function (res) {
+      if (res && !res.active) {
+        $("div.popup").html('<div class="expired">AMPlified Search Extension has expired</div>');
+      }
+    })
 
   });
 </script>

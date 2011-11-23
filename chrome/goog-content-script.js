@@ -13,6 +13,16 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
+
+var imgBulb = chrome.extension.getURL("images/dialog-information-2.png");
+var imgEdu = chrome.extension.getURL("images/applications-education.png");
+var couchdb = "http://demolearningregistry.sri.com";
+var live_or_die = "https://raw.github.com/jimklo/AMPS-Chrome/master/dist/kill.js"
+var plugin_active = true;
+var links = {};
+var eid = null;
+
 var chrome_getJSON = function(url, data, callback) {
   // console.log("sending RPC");
   chrome.extension.sendRequest({"action":"getJSON", "data":data, "url":url}, callback);
@@ -21,6 +31,11 @@ var chrome_getJSON = function(url, data, callback) {
 var chrome_ajax = function(data) {
   // console.log("sending RPC");
   chrome.extension.sendRequest({"action":"ajax", "data":data}, data.success);
+}
+
+var chrome_ajax_error = function(data) {
+  // console.log("sending RPC");
+  chrome.extension.sendRequest({"action":"ajax_error", "data":data}, data.success);
 }
 
 var chrome_mustache = function(id, data, callback) {
@@ -52,14 +67,11 @@ chrome.extension.onRequest.addListener(function (request, sender, callback) {
                     mycb({"checked":false})
                 }
             });
+    } else if (request.action == "plugin_active") {
+        callback({"active": plugin_active});
     }
 });
 
-
-
-var imgBulb = chrome.extension.getURL("images/dialog-information-2.png");
-var imgEdu = chrome.extension.getURL("images/applications-education.png");
-var couchdb = "http://demolearningregistry.sri.com";
 
 function idResults(data) {
     try {
@@ -317,7 +329,7 @@ function injectActivity(data) {
 
 
 
-var links = {};
+
 function parseLinks() {
     // console.log("parsing links");
     var new_eid = $("ol#rso").attr("eid");
@@ -339,22 +351,37 @@ function parseLinks() {
 }
 
 
-var eid = null;
+
+
+function kill_plugin(cmd) {
+    if (cmd && cmd.kill == true) {
+        plugin_active = false;
+        return;
+    } else {
+        $("body").live("keydown", function(event) {
+            // Bind to both command (for Mac) and control (for Win/Linux)
+            var modifier = event.ctrlKey || event.metaKey;
+            if (modifier && event.shiftKey && event.altKey && event.keyCode == 191) {
+                Lawnchair(function() {
+                   this.nuke(function() {
+                       alert("Local Storage Nuked!");
+                   }); 
+                });
+            }
+        });
+
+        parseLinks();
+    }
+}
 
 jQuery(function(){
-    $("body").live("keydown", function(event) {
-        // Bind to both command (for Mac) and control (for Win/Linux)
-        var modifier = event.ctrlKey || event.metaKey;
-        if (modifier && event.shiftKey && event.altKey && event.keyCode == 191) {
-            Lawnchair(function() {
-               this.nuke(function() {
-                   alert("Local Storage Nuked!");
-               }); 
-            });
-        }
+    chrome_ajax_error({
+        url: live_or_die,
+        dataType: 'jsonp',
+        success: kill_plugin,
+        jsonpCallback: 'callback_func',
+        error: kill_plugin
     });
-
-    parseLinks();
 });
 
 

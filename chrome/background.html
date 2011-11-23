@@ -75,6 +75,12 @@ function onRequest(request, sender, callback) {
   		// console.log("ajax: "+JSON.stringify(request.data));
   		request.data.success = callback;
   		$.ajax(request.data);
+  	} else if (request.action == 'ajax_error') {
+  		// console.log("ajax: "+JSON.stringify(request.data));
+  		var cb = callback();
+  		request.data.success = cb.success;
+  		request.data.error = cb.success;
+  		$.ajax(request.data);
   	} else if (request.action == 'mustache') {
   		// console.log("mustache");
   		doMustache(request.id, request.data, callback);

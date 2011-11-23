@@ -49,3 +49,9 @@ div.learning-registry img {
   vertical-align:middle;
   width:24px;
 }
+
+.popup .expired {
+	color:#f00;
+	vertical-align: middle;
+	text-align: center;
+}
