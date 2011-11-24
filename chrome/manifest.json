@@ -6,7 +6,8 @@
   "permissions": [
     "tabs",
     "http://demolearningregistry.sri.com/*",
-    "http://asn.jesandco.org/*"
+    "http://asn.jesandco.org/*",
+    "https://raw.github.com/jimklo/AMPS-Chrome/*"
   ],
   "browser_action": {
     "default_icon": "images/amps-19.png",
