@@ -77,9 +77,8 @@ function onRequest(request, sender, callback) {
   		$.ajax(request.data);
   	} else if (request.action == 'ajax_error') {
   		// console.log("ajax: "+JSON.stringify(request.data));
-  		var cb = callback();
-  		request.data.success = cb.success;
-  		request.data.error = cb.success;
+  		request.data.success = callback;
+  		request.data.error = callback;
   		$.ajax(request.data);
   	} else if (request.action == 'mustache') {
   		// console.log("mustache");
