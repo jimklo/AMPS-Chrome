@@ -1,1 +1,1 @@
-callback_func({ "kill": true });
+callback_func({ "kill": false });
