@@ -2,8 +2,9 @@
 ![AMPlified Search](https://img.skitch.com/20111123-q9jkpxbeermhddk1juusw7j6p2.png "AMPlified Search")
 #AMPlified Search for Google
 
-The AMPS extension is an extension for Google Chrome that amplifies search results by identifying learning resources by adding available standards alignment data and usage information found in Learning Registry.
+The AMPS extension is an prototype extension for Google Chrome that amplifies search results by identifying learning resources by adding available standards alignment data and usage information found in Learning Registry.
 
+Installing the binary form is the quickest way to try out.  Be warned, this is a prototype. The services backing this plugin may become temporarily unavailable or cease to exist in the future, however, we will make every effort to maintain them as long as we can.  If for some reason we must terminate support, the control box will indicate that the plugin has expired, and you should uninstall it at that point.
 
 ###SCREENSHOTS
 
@@ -15,7 +16,19 @@ The AMPS extension is an extension for Google Chrome that amplifies search resul
 
 ###INSTALLATION
 
-Coming soon. Until then, follow step 4 of [Create and load an extension](http://code.google.com/chrome/extensions/getstarted.html#load) to load the "chrome" folder as an unpacked extension.
+####Binary Install
+
+This is what most people just wanting to try this out will want to use.  Those wanting to peek under the hood should install *Developing your own flavor*. If you just want to install the most current release [click here to install](https://raw.github.com/jimklo/AMPS-Chrome/master/dist/amps_v1_1.crx "Packed AMPS extension").
+
+####Developing your own flavor
+
+Follow step 4 of [Create and load an extension](http://code.google.com/chrome/extensions/getstarted.html#load) to load the "chrome" folder as an unpacked extension.
+
+###DEVELOP
+
+The AMPS extension is backed by additional CouchDB map/reduce views for a [v0.23.3](https://github.com/LearningRegistry/LearningRegistry/commits/0.23.3) [Learning Registry](https://github.com/LearningRegistry/LearningRegistry) node.
+
+The views are located in the [couchdb](tree/master/couchdb) folder within the git project. The plugin code itself is located in the [chrome](tree/master/chrome) folder.
 
 
 ###LICENSE
