@@ -1,6 +1,6 @@
 {
   "name": "AMPlified Search for Google™ by Learning Registry",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Amplifies Google™ search by identifying learning resources by adding available standards alignment data and usage information found in Learning Registry. Copyright 2011 SRI International",
   "background_page": "background.html",
   "permissions": [
