@@ -33,10 +33,16 @@ The views are located in the [couchdb](https://github.com/jimklo/AMPS-Chrome/tre
 ###DEPENDENCIES
 
 The AMPS extension utilizes the following Open Source Javascript libraries/frameworks:
+
 * [jQuery](http://jquery.com/) v1.6.4 [MIT License](https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt)
-* [Mustache](http://mustache.github.com/) [mustache.js](https://github.com/janl/mustache.js)  [MIT License](https://github.com/janl/mustache.js/blob/master/LICENSE)
+
+* [Mustache Logic-less templates](http://mustache.github.com/) [mustache.js](https://github.com/janl/mustache.js)  [MIT License](https://github.com/janl/mustache.js/blob/master/LICENSE)
+
 * [crypto-js](http://code.google.com/p/crypto-js/) v2.5.2 [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
+
 * [Lawnchair](http://westcoastlogic.com/lawnchair/) 0.6.1 [MIT License](http://westcoastlogic.com/lawnchair/license/)
+
+* Icons from the [Open Icon Library](http://openiconlibrary.sourceforge.net/) [Various Licenses](http://openiconlibrary.sourceforge.net/LICENSES.html)
 
 
 ###LICENSE
