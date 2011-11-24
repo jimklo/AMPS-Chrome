@@ -9,7 +9,7 @@ The AMPS extension is an extension for Google Chrome that amplifies search resul
 
 <a href="https://skitch.com/jimklo/gmby9/demo-standards-alignment"><img width="600" src="https://img.skitch.com/20111123-fe1xwwmp4s17qwew1kkqytiqj5.medium.jpg" alt="demo-standards-alignment" /></a><br /><span>Standards Alignment with search results</span>
 
-<a href="https://skitch.com/jimklo/gmdem/demo-toggle"><img src="https://img.skitch.com/20111124-t56cc1gyq6u4hyk4afweps22qt.preview.jpg" alt="demo-toggle" /></a><br /><span>Popup controls to select what get's inlined.</span>
+<a href="https://skitch.com/jimklo/gmdem/demo-toggle"><img width="600" src="https://img.skitch.com/20111124-t56cc1gyq6u4hyk4afweps22qt.medium.jpg" alt="demo-toggle" /></a><br /><span>Popup controls to select what get's inlined.</span>
 
 <a href="https://skitch.com/jimklo/gmy9p/amps-demo-activity-data"><img width="600" src="https://img.skitch.com/20111123-cwyjd7mqmexqk3jp6b3auqi224.medium.jpg" alt="AMPS demo - activity data" /></a><br /><span>Paradata with search results</span>
 
