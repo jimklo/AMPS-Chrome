@@ -26,5 +26,6 @@
     "16": "images/amps-16.png",
     "48": "images/amps-48.png"
   },
-  "homepage_url": "https://github.com/jimklo/AMPS-Chrome"
+  "homepage_url": "https://github.com/jimklo/AMPS-Chrome",
+  "update_url": "https://raw.github.com/jimklo/AMPS-Chrome/master/dist/update.xml"
 }
