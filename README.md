@@ -28,7 +28,15 @@ Follow step 4 of [Create and load an extension](http://code.google.com/chrome/ex
 
 The AMPS extension is backed by additional CouchDB map/reduce views for a [v0.23.3](https://github.com/LearningRegistry/LearningRegistry/commits/0.23.3) [Learning Registry](https://github.com/LearningRegistry/LearningRegistry) node.
 
-The views are located in the [couchdb](tree/master/couchdb) folder within the git project. The plugin code itself is located in the [chrome](tree/master/chrome) folder.
+The views are located in the [couchdb](https://github.com/jimklo/AMPS-Chrome/tree/master/couchdb) folder within the git project. The plugin code itself is located in the [chrome](https://github.com/jimklo/AMPS-Chrome/tree/master/chrome) folder.
+
+###DEPENDENCIES
+
+The AMPS extension utilizes the following Open Source Javascript libraries/frameworks:
+* [jQuery](http://jquery.com/) v1.6.4 [MIT License](https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt)
+* [Mustache](http://mustache.github.com/) [mustache.js](https://github.com/janl/mustache.js)  [MIT License](https://github.com/janl/mustache.js/blob/master/LICENSE)
+* [crypto-js](http://code.google.com/p/crypto-js/) v2.5.2 [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
+* [Lawnchair](http://westcoastlogic.com/lawnchair/) 0.6.1 [MIT License](http://westcoastlogic.com/lawnchair/license/)
 
 
 ###LICENSE
