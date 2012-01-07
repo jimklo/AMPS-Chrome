@@ -29,10 +29,12 @@ var mt_cap = function() {
 var mt_capitalED = function() {
   return function(text, render) {
   	var r = render(text);
-  	if (r.match(/e$/)) {
-  		r += "d";
-  	} else {
-  		r += "ed";
+  	if (!r.match(/ed$/)) {
+	  	if (r.match(/e$/)) {
+	  		r += "d";
+	  	} else {
+	  		r += "ed";
+	  	}
   	}
 
   	return r.charAt(0).toUpperCase() + r.slice(1);
