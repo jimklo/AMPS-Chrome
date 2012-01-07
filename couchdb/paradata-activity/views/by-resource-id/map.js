@@ -30,8 +30,8 @@ function(doc) {
 
 				try {
 					if (!emitted[res.object.id]) {
-						emit([res.verb.context.id, action, res.content],null);
-						emitted[res.verb.context.id] = true;
+						emit([res.object.id, action, res.content],null);
+						emitted[res.object.id] = true;
 					}
 				} catch (e1) {}
 
