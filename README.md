@@ -1,4 +1,3 @@
-
 ![AMPlified Search](https://img.skitch.com/20111123-q9jkpxbeermhddk1juusw7j6p2.png "AMPlified Search")
 #AMPlified Search for Google
 
@@ -18,7 +17,7 @@ Installing the binary form is the quickest way to try out.  Be warned, this is a
 
 ####Binary Install
 
-This is what most people just wanting to try this out will want to use.  Those wanting to peek under the hood should install *Developing your own flavor*. If you just want to install the most current release [click here to install](https://raw.github.com/jimklo/AMPS-Chrome/master/dist/amps_v1_1.crx "Packed AMPS extension").
+This is what most people just wanting to try this out will want to use.  Those wanting to peek under the hood should install *Developing your own flavor*. If you just want to install the most current release [click here to install](https://raw.github.com/jimklo/AMPS-Chrome/master/dist/amps_v1_2.crx "Packed AMPS extension").
 
 ####Developing your own flavor
 
