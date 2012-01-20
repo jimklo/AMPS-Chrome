@@ -7,9 +7,9 @@ Installing the binary form is the quickest way to try out the extension.  Please
 
 ###SCREENSHOTS
 
-<a href="https://skitch.com/jimklo/gmby9/demo-standards-alignment"><img width="600" src="https://img.skitch.com/20111123-fe1xwwmp4s17qwew1kkqytiqj5.medium.jpg" alt="demo-standards-alignment" /></a><br /><span>Standards Alignment with search results</span>
+<a href="https://skitch.com/jimklo/gmby9/demo-standards-alignment"><img width="600" src="https://img.skitch.com/20111123-fe1xwwmp4s17qwew1kkqytiqj5.medium.jpg" alt="demo-standards-alignment" /></a><br /><span>Standards alignment with search results</span>
 
-<a href="https://skitch.com/jimklo/gmdem/demo-toggle"><img width="600" src="https://img.skitch.com/20111124-t56cc1gyq6u4hyk4afweps22qt.medium.jpg" alt="demo-toggle" /></a><br /><span>Popup controls to select what get's inlined.</span>
+<a href="https://skitch.com/jimklo/gmdem/demo-toggle"><img width="600" src="https://img.skitch.com/20111124-t56cc1gyq6u4hyk4afweps22qt.medium.jpg" alt="demo-toggle" /></a><br /><span>Pop-up controls to select what gets inlined.</span>
 
 <a href="https://skitch.com/jimklo/gmy9p/amps-demo-activity-data"><img width="600" src="https://img.skitch.com/20111123-cwyjd7mqmexqk3jp6b3auqi224.medium.jpg" alt="AMPS demo - activity data" /></a><br /><span>Paradata with search results</span>
 
