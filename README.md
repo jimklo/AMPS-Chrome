@@ -1,9 +1,9 @@
 ![AMPlified Search](https://img.skitch.com/20111123-q9jkpxbeermhddk1juusw7j6p2.png "AMPlified Search")
 #AMPlified Search for Google
 
-The AMPS extension is an prototype extension for Google Chrome that amplifies search results by identifying learning resources by adding available standards alignment data and usage information found in Learning Registry.
+The AMPS extension is a prototype extension for Google Chrome that amplifies search results containing learning resources by adding standards alignment data and usage information found in the Learning Registry.
 
-Installing the binary form is the quickest way to try out.  Be warned, this is a prototype. The services backing this plugin may become temporarily unavailable or cease to exist in the future, however, we will make every effort to maintain them as long as we can.  If for some reason we must terminate support, the control box will indicate that the plugin has expired, and you should uninstall it at that point.
+Installing the binary form is the quickest way to try out the extension.  Please note that this is a prototype. The services backing this plugin may become temporarily unavailable or cease to exist in the future. However, we will make every effort to maintain them as long as we can.  If for some reason we must terminate support, the control box will indicate that the plugin has expired, and you should uninstall it at that point.
 
 ###SCREENSHOTS
 
@@ -61,4 +61,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-This project has been funded at least or in part with Federal funds from the U.S. Department of Education under Contract Number ED-04-CO-0040/0010. The content of this publication does not necessarily reflect the views or policies of the U.S. Department of Education nor does mention of trade names, commercial products, or organizations imply endorsement by the U.S. Government.
+This project has been funded in part with federal funds from the U.S. Department of Education under Contract Number ED-04-CO-0040/0010. The content of this publication does not necessarily reflect the views or policies of the U.S. Department of Education, nor does mention of trade names, commercial products, or organizations imply endorsement by the U.S. Government.
