@@ -1,15 +1,15 @@
 ![AMPlified Search](https://img.skitch.com/20111123-q9jkpxbeermhddk1juusw7j6p2.png "AMPlified Search")
 #AMPlified Search for Google
 
-The AMPS extension is an prototype extension for Google Chrome that amplifies search results by identifying learning resources by adding available standards alignment data and usage information found in Learning Registry.
+The AMPS extension is a prototype extension for Google Chrome that amplifies search results containing learning resources by adding standards alignment data and usage information found in the Learning Registry.
 
-Installing the binary form is the quickest way to try out.  Be warned, this is a prototype. The services backing this plugin may become temporarily unavailable or cease to exist in the future, however, we will make every effort to maintain them as long as we can.  If for some reason we must terminate support, the control box will indicate that the plugin has expired, and you should uninstall it at that point.
+Installing the binary form is the quickest way to try out the extension.  Please note that this is a prototype. The services backing this plugin may become temporarily unavailable or cease to exist in the future. However, we will make every effort to maintain them as long as we can.  If for some reason we must terminate support, the control box will indicate that the plugin has expired, and you should uninstall it at that point.
 
 ###SCREENSHOTS
 
-<a href="https://skitch.com/jimklo/gmby9/demo-standards-alignment"><img width="600" src="https://img.skitch.com/20111123-fe1xwwmp4s17qwew1kkqytiqj5.medium.jpg" alt="demo-standards-alignment" /></a><br /><span>Standards Alignment with search results</span>
+<a href="https://skitch.com/jimklo/gmby9/demo-standards-alignment"><img width="600" src="https://img.skitch.com/20111123-fe1xwwmp4s17qwew1kkqytiqj5.medium.jpg" alt="demo-standards-alignment" /></a><br /><span>Standards alignment with search results</span>
 
-<a href="https://skitch.com/jimklo/gmdem/demo-toggle"><img width="600" src="https://img.skitch.com/20111124-t56cc1gyq6u4hyk4afweps22qt.medium.jpg" alt="demo-toggle" /></a><br /><span>Popup controls to select what get's inlined.</span>
+<a href="https://skitch.com/jimklo/gmdem/demo-toggle"><img width="600" src="https://img.skitch.com/20111124-t56cc1gyq6u4hyk4afweps22qt.medium.jpg" alt="demo-toggle" /></a><br /><span>Pop-up controls to select what gets inlined.</span>
 
 <a href="https://skitch.com/jimklo/gmy9p/amps-demo-activity-data"><img width="600" src="https://img.skitch.com/20111123-cwyjd7mqmexqk3jp6b3auqi224.medium.jpg" alt="AMPS demo - activity data" /></a><br /><span>Paradata with search results</span>
 
